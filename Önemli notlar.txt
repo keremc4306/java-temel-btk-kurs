@@ -1,0 +1,165 @@
+switch: Herhangi bir değere göre nasıl aksiyon alınacağını yazdığımız teknik. if bloklarına göre çok daha az kullanılır.
+break komutu, döngüyü tamamen sonlandırmak için kullanılır. Yani bir döngü çalışırken break komutu ile karşılaşırsa ondan sonra gelen kodları çalıştırmaz
+
+For döngüsü: Bir programda birbirine benzeyen işlemleri tekrarlamaya yarar.
+i++ -> i'yi 1 arttır.
+
+While döngüsü: for döngüsü gibi belli bir şart sağlanana kadar işlemi yapmaya yarar.
+
+do-while döngüsü: Kodumuz do-while arasında. Farkı şu while döngüsünde şart sağlanmazsa döngüye girmez.
+do-while döngüsünde yapmak istediğimiz işlem çalıştırılır.
+
+Loglama: Kim hangi operasyonu ne zaman ne şekilde çağırdı şeklinde
+
+Dizilerde sınırları aştığımız zaman ArrayIndexOfBoundException hatasını alırız.
+
+------------------------------------------------------------------------------------------
+
+STRINGLER
+length: String'de yazılan karakter sayısını döndürür.
+charAt: Bir string dizesi içindeki karakterlerden belirtilen sıradaki karakter alır. String dizesindeki ilk karakterin index değeri 0, son karakteri de metin uzunluğunun 1 eksiğidir.
+concat: İki stringi birleştirmek için kullanılır.
+indexOf: Belirttiğim karakterin mesajın içinde kaçıncı eleman olduğunu bulmaya yarar.
+split: Bir metni belli bir karakter veya karakter dizisini dikkate alarak parçalamaya yarar.
+
+------------------------------------------------------------------------------------------
+
+SOLID Prensipleri
+S - Single Responsibility Principle: Bir class sadece bir işe yarar. Bir metot sadece bir işe yarar.
+
+------------------------------------------------------------------------------------------
+
+Encapsulation(Kapsülleme): Kullanıcıyı herhangi bir alanı kullanmak için kısıtlamayı öngörür.
+
+Metot overloading: Bir sınıf içerisinde aynı isme fakat farklı imzaya (kabul edeceği parametrelerin tipi, sayısı, sırası) sahip metot tanımlanması olarak ifade edilebilir.
+
+public: her yerden erişilebilir demek, private: sadece tanımlandığı blokta geçerli
+
+this: bu class demek, constructor: yapıcı, oluşturucu
+
+------------------------------------------------------------------------------------------
+
+Inheritance: Miras demek. 2 nesne arasında miras durumu. Biz bunu classlar arasında yapıyoruz.
+Örnek: Customer extends Person: Customer miras alır Person'dan
+
+------------------------------------------------------------------------------------------
+
+Polymorphism: Çok biçimlilik. Referans tipleri birbirinin referansını tutması itibariyle olan durum (eğer arada inheritance varsa).
+
+------------------------------------------------------------------------------------------
+
+Abstract class: Sadece bir sınıfı inherit edebilir. Bir sınıf hem başka bir sınıfı hem de abstract classı miras alamaz.
+Kural: Abstract bir sınıfın abstract olabilmesi için abstract imzasıyla beslenmesi gerekiyor. İlla ki bir abstract olmak zorunda değil.
+Abstract sınıflar asla newlenemez.
+
+------------------------------------------------------------------------------------------
+
+SOLID 2. prensibi
+O - Open-closed principle: Bir sisteme yeni bir özellik getirildiğinde mevcuttaki hiçbir kodu değiştiremezsin.
+
+------------------------------------------------------------------------------------------
+
+Interfaceler class kabul edilmiyor. Interfaceler normal classlar gibi veya abstract classlar gibi referans tutabiliyorlar.
+Not: Bir class birden fazla interface'i implemente edebiliyor. Bir interface'in üyeleri default olarak public'tir.
+Dal (Data Access Layer)
+Not: Interfaceler abstract classlar gibi newlenemez. Ama interface başka bir classı implemente eden classın referansını tutabilir.
+Interfaceler, operasyonu implemente edilmesi istenen durumlarda kullanılır.
+Implementation: Bir class birden fazla interface'i implemente edebilir.
+
+------------------------------------------------------------------------------------------
+
+static kavramını araçların içinde utility yazarak kullanırız. Nesnenin örneğini oluşturuyor.
+Örnek: Elimizde ProductValidator classı var. Bir ürünü kaydederken, bir ürünü güncellerken ürünün kurallara uygun olup olmadığını bulmak için kullanırız.
+isEmpty(): Değer girilmedi anlamına geliyor.
+Yapıcı bloklar newleyince çalışıyor.
+Inner class: Kullanıcı gruplandırma amaçlı kullanır.
+
+------------------------------------------------------------------------------------------
+
+Packages
+Bir paketi başka bir paket içinde kullanmak istiyorsan onu import etmek gerekiyor. Paketler arası iletişim importla oluyor.
+
+------------------------------------------------------------------------------------------
+
+Exceptions
+Örnek: int[] numbers = new int[]{1,2,3}; // {1,2,3} dinamik olarak geliyor.
+       System.out.println(numbers[5]);
+
+Hata yönetiminde try-catch bloğu kullanıyoruz. try demek, içindeki kodu çalıştırmayı dene demek. Outputta oluşan hata catch(Exception exception)'a parametre olarak geçilir.
+Bu nedenle kodlardan ya try çalışır ya catch çalışır.
+
+------------------------------------------------------------------------------------------
+
+Exception hiyerarşisi
+Error: Bizim kodlarla müdahale edemeyeceğimiz hatalardır. Örnek: Java'da sanal makine hataları
+Not: Hatanın türüne göre kullanıcıyı farklı yerlere yönlendirebiliriz.
+Örnek: Hesapta para yok hatasıysa para yatırabileceği sayfaya havale sayfasına yönlendirme
+
+
+------------------------------------------------------------------------------------------
+
+ArrayListler
+get(index) metodu: Liste içindeki belirli bir dizinin öğesini almak için kullanılır.
+set() metodu: Listedeki belirtilen konumdaki öğeyi belirtilen öğeyle değiştirmek için kullanılır.
+
+ArrayList'te eleman güncelleme işlemi
+numbers.set(0, 100);
+System.out.println(numbers.get(0));
+
+------------------------------------------------------------------------------------------
+
+HashMap, “Hashing” ismi verilen bir teknik ile girilen verileri eşleştirir. 
+Eşleştirdiği her anahtar bir değere, her değer bir anahtara refere eder. 
+Dolayısıyla spesifik özellikleri belirlenen bir veriyi ya da anahtarı bulmak oldukça kolaydır.
+
+------------------------------------------------------------------------------------------
+
+Checked Exceptions(Örnek)
+Dosyaları hızlıca okumak için önce dosyayı belleğe alan ve oradan okumamızı sağlayan class: BufferedReader classı
+FileNotFoundException hatası: Dosyayı bulamazsam hatası
+
+readLine komutu: Satır okuma işleminde kullanılıyor.
+
+------------------------------------------------------------------------------------------
+
+throw ifadesiyle bilinçli olarak hata fırlatırız. Karşı taraf ne hata aldıysa aksiyona göre hata fırlatılır.
+getMessage: Gönderdiğimiz mesajı vermeye yarayacak.
+
+------------------------------------------------------------------------------------------
+
+super.getMessage(): Exception'ın mesajını çalıştır demek
+super.getMessage() yerine hata constructorda geçilebiliyor.
+
+String message;
+this.message = message; derken eşitliğin sol tarafındaki message String tipinde tanımlanan message, eşitliğin sağ tarafında tanımlanan message
+constructor'da parametreyle gönderilen message
+
+------------------------------------------------------------------------------------------
+
+Dosya okuma-yazma işlemleri
+File file = new File("dosya yolu belirtilir.");
+createNewFile(): Dosyayı belirttiğimiz path'te oluşturuyor. Sonra true false dönüyor.
+getAbsolutePath() metodu bize dosya yolunu verir.
+canWrite(): Dosya yazılabilir mi ?
+
+------------------------------------------------------------------------------------------
+
+hasNextLine(): Satır okuyabildiği sürece devam ediyor.
+nextLine(): Yeni satır varsa okunacak bir şey de var demek.
+
+------------------------------------------------------------------------------------------
+
+Tip güvenli çalışma için generic classlara ihtiyaç duyuyoruz.
+Validator classında validate metodunu generic yapmak için return type'ın önüne <T> koyarız.
+
+------------------------------------------------------------------------------------------
+
+Bir classın thread güdümlü çalışabilmesi için Runnable classından implement ederiz.
+Örnek: 
+for (int i = 1; i <= 10; i++) {
+    System.out.println(threadName + ": " + i);
+    Thread.sleep(1000); // Üstteki kodu yaz 1 sn bekle.
+}
+
+run() operasyonu thread'in kendisidir, thread'i başlat demek.
+Oluşturduğumuz thread classının ismini oluşturmak için ya getter setter ya da constructor kullanırız.
