@@ -8,18 +8,15 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         Connection connection = null;
         DbHelper helper = new DbHelper();
-        PreparedStatement statement = null; //Insert ifadeleri PreparedStatement classı ile yapılıyor.
+        PreparedStatement statement = null;
         ResultSet resultSet;
         try {
             connection = helper.getConnection();
-            String sql = "insert into world.city (Name,CountryCode,District,Population) values (?,?,?,?)";
+            String sql = "update world.city set population = 100000 where id = ?";
             statement = connection.prepareStatement(sql);
-            statement.setString(1,"Düzce 2");
-            statement.setString(2,"TUR");
-            statement.setString(3,"Turkey");
-            statement.setInt(4,70000);
-            int result = statement.executeUpdate(); // executeUpdate() işleminde etkilenen kayıt sayısı gelir.
-            System.out.println("Kayıt eklendi");
+            statement.setInt(1, 4080);
+            int result = statement.executeUpdate();
+            System.out.println("Kayıt güncellendi");
 
         } catch (SQLException exception) {
             helper.showErrorMessage(exception);
@@ -53,6 +50,30 @@ public class Main {
         } catch (SQLException exception) {
             helper.showErrorMessage(exception);
         } finally {
+            connection.close();
+        }
+    }
+
+    public static void insertData() throws SQLException {
+        Connection connection = null;
+        DbHelper helper = new DbHelper();
+        PreparedStatement statement = null; //Insert ifadeleri PreparedStatement classı ile yapılıyor.
+        ResultSet resultSet;
+        try {
+            connection = helper.getConnection();
+            String sql = "insert into world.city (Name,CountryCode,District,Population) values (?,?,?,?)";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1,"Düzce 2");
+            statement.setString(2,"TUR");
+            statement.setString(3,"Turkey");
+            statement.setInt(4,70000);
+            int result = statement.executeUpdate(); // executeUpdate() işleminde etkilenen kayıt sayısı gelir.
+            System.out.println("Kayıt eklendi");
+
+        } catch (SQLException exception) {
+            helper.showErrorMessage(exception);
+        } finally {
+            statement.close();
             connection.close();
         }
     }
